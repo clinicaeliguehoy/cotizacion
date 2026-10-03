@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista Interior 39m² + Escalera - PSP Blanco</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f1f2f4;
+      color: #1a1a1a;
+      padding: 20px;
+    }
+    .ticket {
+      max-width: 520px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e7eb;
+    }
+    .header {
+      background: #111827;
+      color: white;
+      padding: 24px;
+    }
+    .header h1 {
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
+    .header p {
+      opacity: 0.6;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+    .badge {
+      display: inline-block;
+      background: white;
+      color: #111827;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 12px;
+      letter-spacing: 0.5px;
+    }
+    .content {
+      padding: 20px;
+    }
+    .alert {
+      background: #111827;
+      color: white;
+      border: 1px solid #111827;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-align: center;
+      letter-spacing: 0.3px;
+    }
+    .row {
+      display: flex;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f3f4f6;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .row:hover {
+      background: #fafafa;
+    }
+    .row:last-child {
+      border-bottom: none;
+    }
+    .check {
+      width: 22px;
+      height: 22px;
+      border: 2px solid #111827;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .row.done .check {
+      background: #111827;
+      border-color: #111827;
+      color: white;
+    }
+    .row.done .check::after {
+      content: '✓';
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .row.done .info {
+      opacity: 0.5;
+      text-decoration: line-through;
+    }
+    .info {
+      flex: 1;
+    }
+    .qty {
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .prod {
+      font-size: 14px;
+      margin-top: 2px;
+    }
+    .note {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 4px;
+      background: #f9fafb;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #f3f4f6;
+    }
+    .footer {
+      padding: 18px 20px;
+      background: #f9fafb;
+      border-top: 1px dashed #d1d5db;
+    }
+    .total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 6px 0;
+    }
+    .total strong {
+      font-size: 14px;
+    }
+    .progress {
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .bar {
+      height: 100%;
+      background: #111827;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .small {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="ticket">
+    <div class="header">
+      <h1>INTERIOR + ESCALERA</h1>
+      <p>39 m² interior + 7.77 m² escalera = 46.77 netos / 51.84 m² con desperdicio</p>
+      <div class="badge">PISO SOBRE PISO - MÁRMOL BLANCO</div>
+    </div>
+
+    <div class="content">
+      <div class="alert">TIENE QUE DECIR PSP Y SER BLANCO PARA PISO MÁRMOL BLANCO</div>
+      
+      <div class="row" onclick="this.classList.toggle('done'); update();">
+        <div class="check"></div>
+        <div class="info">
+          <div class="qty">36 cajas</div>
+          <div class="prod">Piso blanco mármol 60x60 - 1.44 m² por caja (4 pzas) = 51.84 m²</div>
+          <div class="note">Ya incluye zoclo: 44 ml = 74 tiras 10x60. Compra todo del mismo lote.</div>
+        </div>
+      </div>
+
+      <div class="row" onclick="this.classList.toggle('done'); update();">
+        <div class="check"></div>
+        <div class="info">
+          <div class="qty">15 bultos - 20kg</div>
+          <div class="prod">CREST Blanco Piso Sobre Piso (PSP) - TIENE QUE DECIR PSP Y SER BLANCO</div>
+          <div class="note">Es para pegar sobre piso viejo sin picar. No aceptes gris ni normal, solo PSP Blanco. Rendimiento ~3.5 m² por bulto.</div>
+        </div>
+      </div>
+
+      <div class="row" onclick="this.classList.toggle('done'); update();">
+        <div class="check"></div>
+        <div class="info">
+          <div class="qty">3 bolsas - 5kg</div>
+          <div class="prod">CREST Boquilla Blanca Sin Arena - BLANCA para mármol</div>
+          <div class="note">Sin arena para junta fina de mármol blanco 2mm. No uses con arena ni beige.</div>
+        </div>
+      </div>
+
+      <div class="row" onclick="this.classList.toggle('done'); update();">
+        <div class="check"></div>
+        <div class="info">
+          <div class="qty">14 piezas - 1.05m</div>
+          <div class="prod">Narices / Perfiles aluminio blanco para escalón</div>
+          <div class="note">Para 14 escalones, 1.05m cada uno.</div>
+        </div>
+      </div>
+
+      <div class="row" onclick="this.classList.toggle('done'); update();">
+        <div class="check"></div>
+        <div class="info">
+          <div class="qty">1 bolsa + 1 bolsa</div>
+          <div class="prod">Crucetas 2mm x 200 pzas + Cuñas niveladoras x 100</div>
+          <div class="note">Sistema de nivelación para que no quede ceja.</div>
+        </div>
+      </div>
+
+      <div class="row" onclick="this.classList.toggle('done'); update();">
+        <div class="check"></div>
+        <div class="info">
+          <div class="qty">1 litro</div>
+          <div class="prod">Ácido muriático para limpieza final</div>
+          <div class="note">Solo para lavar el piso viejo antes de pegar y limpieza final.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="total"><span>Interior neto</span><span>39 m²</span></div>
+      <div class="total"><span>Escalera neta</span><span>7.77 m²</span></div>
+      <div class="total"><span>Total neto</span><span>46.77 m²</span></div>
+      <div class="total"><span>Total a comprar 10% desp.</span><strong>51.84 m² (36 cajas)</strong></div>
+      <div class="progress"><div class="bar" id="bar"></div></div>
+      <div class="small" id="txt">0 de 6 completado</div>
+    </div>
+  </div>
+
+  <script>
+    function update() {
+      const filas = document.querySelectorAll('.row');
+      const completadas = document.querySelectorAll('.row.done').length;
+      const porcentaje = (completadas / filas.length) * 100;
+      
+      document.getElementById('bar').style.width = porcentaje + '%';
+      document.getElementById('txt').textContent = `${completadas} de ${filas.length} completado`;
+    }
+  </script>
+</body>
+</html>
