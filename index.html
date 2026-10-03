@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista Interior 39m² + Escalera - PSP Blanco</title>
+  <title>Lista Completa de Materiales</title>
   <style>
     * {
       box-sizing: border-box;
@@ -16,6 +16,49 @@
       color: #1a1a1a;
       padding: 20px;
     }
+    /* Navegación */
+    .nav {
+      max-width: 520px;
+      margin: 0 auto 20px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .nav-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 10px 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-btn.activo {
+      background: #111827;
+      color: white;
+    }
+    .nav-btn.inactivo {
+      background: #e5e7eb;
+      color: #4b5563;
+    }
+    .nav-btn.inactivo:hover {
+      background: #d1d5db;
+    }
+    /* Secciones */
+    .seccion {
+      display: none;
+    }
+    .seccion.activa {
+      display: block;
+      animation: aparecer 0.3s ease;
+    }
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* === ESTILO 1: Interior + Escalera === */
     .ticket {
       max-width: 520px;
       margin: 0 auto;
@@ -30,15 +73,8 @@
       color: white;
       padding: 24px;
     }
-    .header h1 {
-      font-size: 20px;
-      letter-spacing: 0.5px;
-    }
-    .header p {
-      opacity: 0.6;
-      margin-top: 6px;
-      font-size: 13px;
-    }
+    .header h1 { font-size: 20px; letter-spacing: 0.5px; }
+    .header p { opacity: 0.6; margin-top: 6px; font-size: 13px; }
     .badge {
       display: inline-block;
       background: white;
@@ -48,22 +84,17 @@
       font-size: 11px;
       font-weight: 800;
       margin-top: 12px;
-      letter-spacing: 0.5px;
     }
-    .content {
-      padding: 20px;
-    }
+    .content { padding: 20px; }
     .alert {
       background: #111827;
       color: white;
-      border: 1px solid #111827;
       padding: 12px;
       border-radius: 10px;
       font-size: 13px;
       font-weight: 700;
       margin-bottom: 18px;
       text-align: center;
-      letter-spacing: 0.3px;
     }
     .row {
       display: flex;
@@ -74,21 +105,14 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .row:hover {
-      background: #fafafa;
-    }
-    .row:last-child {
-      border-bottom: none;
-    }
+    .row:hover { background: #fafafa; }
+    .row:last-child { border-bottom: none; }
     .check {
-      width: 22px;
-      height: 22px;
+      width: 22px; height: 22px;
       border: 2px solid #111827;
       border-radius: 6px;
       flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       transition: all 0.2s;
     }
     .row.done .check {
@@ -96,26 +120,11 @@
       border-color: #111827;
       color: white;
     }
-    .row.done .check::after {
-      content: '✓';
-      font-size: 13px;
-      font-weight: bold;
-    }
-    .row.done .info {
-      opacity: 0.5;
-      text-decoration: line-through;
-    }
-    .info {
-      flex: 1;
-    }
-    .qty {
-      font-weight: 800;
-      font-size: 15px;
-    }
-    .prod {
-      font-size: 14px;
-      margin-top: 2px;
-    }
+    .row.done .check::after { content: '✓'; font-size: 13px; font-weight: bold; }
+    .row.done .info { opacity: 0.5; text-decoration: line-through; }
+    .info { flex: 1; }
+    .qty { font-weight: 800; font-size: 15px; }
+    .prod { font-size: 14px; margin-top: 2px; }
     .note {
       font-size: 11px;
       color: #6b7280;
@@ -136,9 +145,7 @@
       font-size: 13px;
       margin: 6px 0;
     }
-    .total strong {
-      font-size: 14px;
-    }
+    .total strong { font-size: 14px; }
     .progress {
       height: 6px;
       background: #e5e7eb;
@@ -146,105 +153,442 @@
       overflow: hidden;
       margin-top: 12px;
     }
-    .bar {
-      height: 100%;
-      background: #111827;
-      width: 0%;
-      transition: width 0.3s ease;
+    .bar { height: 100%; background: #111827; width: 0%; transition: width 0.3s ease; }
+    .small { font-size: 11px; color: #9ca3af; margin-top: 8px; text-align: center; }
+
+    /* === ESTILO 2: Patio Servicio === */
+    .ticket-patio {
+      max-width: 480px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e8ddd0;
     }
-    .small {
+    .header-patio {
+      background: #2b2117;
+      color: #f5f1eb;
+      padding: 24px;
+    }
+    .header-patio h1 { font-size: 20px; }
+    .header-patio p { opacity: 0.7; margin-top: 6px; font-size: 13px; }
+    .badge-patio {
+      display: inline-block;
+      background: #c9a86a;
+      color: #2b2117;
+      padding: 4px 10px;
+      border-radius: 20px;
       font-size: 11px;
-      color: #9ca3af;
-      margin-top: 8px;
-      text-align: center;
+      font-weight: 700;
+      margin-top: 12px;
     }
+    .alert-patio {
+      background: #fff7e6;
+      border: 1px solid #f0d9a0;
+      color: #7a5a20;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .row-patio {
+      display: flex;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f0ebe3;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .row-patio:hover { background: #faf7f3; }
+    .row-patio:last-child { border-bottom: none; }
+    .check-patio {
+      width: 22px; height: 22px;
+      border: 2px solid #c9a86a;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .row-patio.done .check-patio {
+      background: #2b2117;
+      border-color: #2b2117;
+      color: white;
+    }
+    .row-patio.done .check-patio::after { content: '✓'; font-size: 13px; font-weight: bold; }
+    .row-patio.done .info-patio { opacity: 0.5; text-decoration: line-through; }
+    .info-patio { flex: 1; }
+    .qty-patio { font-weight: 800; font-size: 15px; }
+    .prod-patio { font-size: 14px; margin-top: 2px; }
+    .note-patio {
+      font-size: 11px;
+      color: #8a7a6a;
+      margin-top: 4px;
+      background: #f9f5f0;
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+    .footer-patio {
+      padding: 18px 20px;
+      background: #faf7f3;
+      border-top: 1px dashed #e0d5c5;
+    }
+    .total-patio {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 6px 0;
+    }
+    .total-patio strong { font-size: 14px; }
+    .progress-patio {
+      height: 6px;
+      background: #eee4d6;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .bar-patio { height: 100%; background: #2b2117; width: 0%; transition: width 0.3s ease; }
+    .small-patio { font-size: 11px; color: #9a8a7a; margin-top: 8px; text-align: center; }
+
+    /* === ESTILO 3: Cocina === */
+    .ticket-cocina {
+      max-width: 520px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+    .header-cocina {
+      background: #0f172a;
+      color: white;
+      padding: 24px;
+    }
+    .header-cocina h1 { font-size: 19px; }
+    .header-cocina p { opacity: 0.7; margin-top: 6px; font-size: 12px; line-height: 1.5; }
+    .badge-cocina {
+      display: inline-block;
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 12px;
+    }
+    .grid-cocina {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .card-cocina {
+      background: #f1f5f9;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    }
+    .card-cocina b { font-size: 16px; display: block; }
+    .card-cocina span { font-size: 11px; color: #64748b; }
+    .alert-cocina {
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
+      color: #0c4a6e;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .row-cocina {
+      display: flex;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f1f5f9;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .row-cocina:hover { background: #f8fafc; }
+    .row-cocina:last-child { border-bottom: none; }
+    .check-cocina {
+      width: 22px; height: 22px;
+      border: 2px solid #0f172a;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .row-cocina.done .check-cocina {
+      background: #0f172a;
+      border-color: #0f172a;
+      color: white;
+    }
+    .row-cocina.done .check-cocina::after { content: '✓'; font-size: 13px; font-weight: bold; }
+    .row-cocina.done .info-cocina { opacity: 0.5; text-decoration: line-through; }
+    .info-cocina { flex: 1; }
+    .qty-cocina { font-weight: 800; font-size: 15px; }
+    .prod-cocina { font-size: 13px; margin-top: 2px; }
+    .note-cocina {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 4px;
+      background: #f8fafc;
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+    .footer-cocina {
+      padding: 18px 20px;
+      background: #f8fafc;
+      border-top: 1px dashed #cbd5e1;
+    }
+    .total-cocina {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 5px 0;
+    }
+    .progress-cocina {
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .bar-cocina { height: 100%; background: #0f172a; width: 0%; transition: width 0.3s ease; }
   </style>
 </head>
 <body>
-  <div class="ticket">
-    <div class="header">
-      <h1>INTERIOR + ESCALERA</h1>
-      <p>39 m² interior + 7.77 m² escalera = 46.77 netos / 51.84 m² con desperdicio</p>
-      <div class="badge">PISO SOBRE PISO - MÁRMOL BLANCO</div>
+
+  <!-- Navegación -->
+  <nav class="nav">
+    <button class="nav-btn activo" onclick="mostrarSeccion(0)">🏠 Interior</button>
+    <button class="nav-btn inactivo" onclick="mostrarSeccion(1)">🧱 Patio</button>
+    <button class="nav-btn inactivo" onclick="mostrarSeccion(2)">🍳 Cocina</button>
+  </nav>
+
+  <!-- SECCIÓN 1: Interior + Escalera -->
+  <section class="seccion activa">
+    <div class="ticket">
+      <div class="header">
+        <h1>INTERIOR + ESCALERA</h1>
+        <p>39 m² interior + 7.77 m² escalera = 46.77 netos / 51.84 m² con desperdicio</p>
+        <div class="badge">PISO SOBRE PISO - MÁRMOL BLANCO</div>
+      </div>
+      <div class="content">
+        <div class="alert">TIENE QUE DECIR PSP Y SER BLANCO PARA PISO MÁRMOL BLANCO</div>
+        
+        <div class="row" onclick="this.classList.toggle('done'); update1();">
+          <div class="check"></div>
+          <div class="info">
+            <div class="qty">36 cajas</div>
+            <div class="prod">Piso blanco mármol 60x60 - 1.44 m² por caja = 51.84 m²</div>
+            <div class="note">Ya incluye zoclo: 44 ml = 74 tiras 10x60. Compra todo del mismo lote.</div>
+          </div>
+        </div>
+        <div class="row" onclick="this.classList.toggle('done'); update1();">
+          <div class="check"></div>
+          <div class="info">
+            <div class="qty">15 bultos - 20kg</div>
+            <div class="prod">CREST Blanco Piso Sobre Piso (PSP)</div>
+            <div class="note">Solo PSP Blanco. No aceptes gris ni normal. Rendimiento ~3.5 m² por bulto.</div>
+          </div>
+        </div>
+        <div class="row" onclick="this.classList.toggle('done'); update1();">
+          <div class="check"></div>
+          <div class="info">
+            <div class="qty">3 bolsas - 5kg</div>
+            <div class="prod">CREST Boquilla Blanca Sin Arena</div>
+            <div class="note">Junta fina 2mm para mármol blanco. Sin arena.</div>
+          </div>
+        </div>
+        <div class="row" onclick="this.classList.toggle('done'); update1();">
+          <div class="check"></div>
+          <div class="info">
+            <div class="qty">14 piezas - 1.05m</div>
+            <div class="prod">Narices / Perfiles aluminio blanco</div>
+            <div class="note">Para 14 escalones, 1.05m cada uno.</div>
+          </div>
+        </div>
+        <div class="row" onclick="this.classList.toggle('done'); update1();">
+          <div class="check"></div>
+          <div class="info">
+            <div class="qty">1 bolsa + 1 bolsa</div>
+            <div class="prod">Crucetas 2mm x 200 + Cuñas niveladoras x 100</div>
+            <div class="note">Sistema de nivelación para que no quede ceja.</div>
+          </div>
+        </div>
+        <div class="row" onclick="this.classList.toggle('done'); update1();">
+          <div class="check"></div>
+          <div class="info">
+            <div class="qty">1 litro</div>
+            <div class="prod">Ácido muriático</div>
+            <div class="note">Para lavar piso viejo antes de pegar y limpieza final.</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="total"><span>Interior neto</span><span>39 m²</span></div>
+        <div class="total"><span>Escalera neta</span><span>7.77 m²</span></div>
+        <div class="total"><span>Total neto</span><span>46.77 m²</span></div>
+        <div class="total"><span>Total a comprar +10%</span><strong>51.84 m² (36 cajas)</strong></div>
+        <div class="progress"><div class="bar" id="bar1"></div></div>
+        <div class="small" id="txt1">0 de 6 completado</div>
+      </div>
     </div>
+  </section>
 
-    <div class="content">
-      <div class="alert">TIENE QUE DECIR PSP Y SER BLANCO PARA PISO MÁRMOL BLANCO</div>
-      
-      <div class="row" onclick="this.classList.toggle('done'); update();">
-        <div class="check"></div>
-        <div class="info">
-          <div class="qty">36 cajas</div>
-          <div class="prod">Piso blanco mármol 60x60 - 1.44 m² por caja (4 pzas) = 51.84 m²</div>
-          <div class="note">Ya incluye zoclo: 44 ml = 74 tiras 10x60. Compra todo del mismo lote.</div>
+  <!-- SECCIÓN 2: Patio Servicio -->
+  <section class="seccion">
+    <div class="ticket-patio">
+      <div class="header-patio">
+        <h1>PATIO SERVICIO</h1>
+        <p>4.80 m² netos • 5.28 m² con 10% desperdicio • 7.96 ml zoclo</p>
+        <div class="badge-patio">FIRME DE CEMENTO - NO LLEVA PSP</div>
+      </div>
+      <div class="content">
+        <div class="alert-patio">⚠️ Sobre firme de cemento. Compra adhesivo NORMAL, no PSP. Más barato.</div>
+        
+        <div class="row-patio" onclick="this.classList.toggle('done'); update2();">
+          <div class="check-patio"></div>
+          <div class="info-patio">
+            <div class="qty-patio">5 cajas</div>
+            <div class="prod-patio">Piso Woodland 20x60 beige madera - 7.20 m²</div>
+            <div class="note-patio">4 cajas piso + 1 caja zoclo (14 tiras 10x60). Cada caja 1.44 m²</div>
+          </div>
+        </div>
+        <div class="row-patio" onclick="this.classList.toggle('done'); update2();">
+          <div class="check-patio"></div>
+          <div class="info-patio">
+            <div class="qty-patio">2 bultos - 20kg</div>
+            <div class="prod-patio">CREST Normal Blanco o Gris (NO PSP)</div>
+            <div class="note-patio">Para firme de cemento. Gris ahorra, Blanco limpio en piso claro.</div>
+          </div>
+        </div>
+        <div class="row-patio" onclick="this.classList.toggle('done'); update2();">
+          <div class="check-patio"></div>
+          <div class="info-patio">
+            <div class="qty-patio">1 bolsa - 5kg</div>
+            <div class="prod-patio">CREST Boquilla CON Arena - Beige/Madera</div>
+            <div class="note-patio">Piso tipo madera lleva CON arena. Color que combine.</div>
+          </div>
+        </div>
+        <div class="row-patio" onclick="this.classList.toggle('done'); update2();">
+          <div class="check-patio"></div>
+          <div class="info-patio">
+            <div class="qty-patio">1 bolsa - 100 pzas</div>
+            <div class="prod-patio">Crucetas 2mm</div>
+            <div class="note-patio">Recomendado para que quede alineado.</div>
+          </div>
         </div>
       </div>
-
-      <div class="row" onclick="this.classList.toggle('done'); update();">
-        <div class="check"></div>
-        <div class="info">
-          <div class="qty">15 bultos - 20kg</div>
-          <div class="prod">CREST Blanco Piso Sobre Piso (PSP) - TIENE QUE DECIR PSP Y SER BLANCO</div>
-          <div class="note">Es para pegar sobre piso viejo sin picar. No aceptes gris ni normal, solo PSP Blanco. Rendimiento ~3.5 m² por bulto.</div>
-        </div>
-      </div>
-
-      <div class="row" onclick="this.classList.toggle('done'); update();">
-        <div class="check"></div>
-        <div class="info">
-          <div class="qty">3 bolsas - 5kg</div>
-          <div class="prod">CREST Boquilla Blanca Sin Arena - BLANCA para mármol</div>
-          <div class="note">Sin arena para junta fina de mármol blanco 2mm. No uses con arena ni beige.</div>
-        </div>
-      </div>
-
-      <div class="row" onclick="this.classList.toggle('done'); update();">
-        <div class="check"></div>
-        <div class="info">
-          <div class="qty">14 piezas - 1.05m</div>
-          <div class="prod">Narices / Perfiles aluminio blanco para escalón</div>
-          <div class="note">Para 14 escalones, 1.05m cada uno.</div>
-        </div>
-      </div>
-
-      <div class="row" onclick="this.classList.toggle('done'); update();">
-        <div class="check"></div>
-        <div class="info">
-          <div class="qty">1 bolsa + 1 bolsa</div>
-          <div class="prod">Crucetas 2mm x 200 pzas + Cuñas niveladoras x 100</div>
-          <div class="note">Sistema de nivelación para que no quede ceja.</div>
-        </div>
-      </div>
-
-      <div class="row" onclick="this.classList.toggle('done'); update();">
-        <div class="check"></div>
-        <div class="info">
-          <div class="qty">1 litro</div>
-          <div class="prod">Ácido muriático para limpieza final</div>
-          <div class="note">Solo para lavar el piso viejo antes de pegar y limpieza final.</div>
-        </div>
+      <div class="footer-patio">
+        <div class="total-patio"><span>Piso neto</span><span>4.80 m²</span></div>
+        <div class="total-patio"><span>Con desperdicio 10%</span><span>5.28 m²</span></div>
+        <div class="total-patio"><span>Total a comprar</span><strong>7.20 m² (5 cajas)</strong></div>
+        <div class="total-patio"><span>Zoclo incluido</span><span>7.96 ml</span></div>
+        <div class="progress-patio"><div class="bar-patio" id="bar2"></div></div>
+        <div class="small-patio" id="txt2">0 de 4 completado</div>
       </div>
     </div>
+  </section>
 
-    <div class="footer">
-      <div class="total"><span>Interior neto</span><span>39 m²</span></div>
-      <div class="total"><span>Escalera neta</span><span>7.77 m²</span></div>
-      <div class="total"><span>Total neto</span><span>46.77 m²</span></div>
-      <div class="total"><span>Total a comprar 10% desp.</span><strong>51.84 m² (36 cajas)</strong></div>
-      <div class="progress"><div class="bar" id="bar"></div></div>
-      <div class="small" id="txt">0 de 6 completado</div>
+  <!-- SECCIÓN 3: Cocina -->
+  <section class="seccion">
+    <div class="ticket-cocina">
+      <div class="header-cocina">
+        <h1>COCINA - 2 MUROS AZULEJO</h1>
+        <p>Muro fondo 2.28m + Muro ventana 2.80m - Puerta 0.90m = 4.18ml<br>Altura 2.18m. Ventana 1.20x1.00 descontada</p>
+        <div class="badge-cocina">MALLA YORK WHITE GLOSS 30x30 - TIPO SUBWAY</div>
+      </div>
+      <div class="content">
+        <div class="grid-cocina">
+          <div class="card-cocina"><b>7.91 m²</b><span>Neto sin desp.</span></div>
+          <div class="card-cocina"><b>9.00 m²</b><span>Con 10% comprar</span></div>
+        </div>
+        <div class="alert-cocina">⚠️ Cálculo: 4.97 + 2.94 = 7.91 m² netos</div>
+        
+        <div class="row-cocina" onclick="this.classList.toggle('done'); update3();">
+          <div class="check-cocina"></div>
+          <div class="info-cocina">
+            <div class="qty-cocina">9 m² = 100 mallas</div>
+            <div class="prod-cocina">Malla Tech York White Gloss 30x30cm $234/m²</div>
+            <div class="note-cocina">11.11 mallas = 1 m². Compra 100 mallas = 9 m². Si vienen por caja de 1m² son 9 cajas.</div>
+          </div>
+        </div>
+        <div class="row-cocina" onclick="this.classList.toggle('done'); update3();">
+          <div class="check-cocina"></div>
+          <div class="info-cocina">
+            <div class="qty-cocina">3 bultos - 20kg</div>
+            <div class="prod-cocina">CREST Blanco Normal (NO PSP)</div>
+            <div class="note-cocina">Para muro con aplanado va adhesivo normal blanco. Rend. 4-5 m² por bulto.</div>
+          </div>
+        </div>
+        <div class="row-cocina" onclick="this.classList.toggle('done'); update3();">
+          <div class="check-cocina"></div>
+          <div class="info-cocina">
+            <div class="qty-cocina">1 bolsa - 5kg</div>
+            <div class="prod-cocina">CREST Boquilla Blanca Sin Arena</div>
+            <div class="note-cocina">Junta fina 2mm para subway. Blanca para acabado limpio.</div>
+          </div>
+        </div>
+        <div class="row-cocina" onclick="this.classList.toggle('done'); update3();">
+          <div class="check-cocina"></div>
+          <div class="info-cocina">
+            <div class="qty-cocina">1 bolsa</div>
+            <div class="prod-cocina">Crucetas 1.5mm o 2mm + Espaciadores</div>
+            <div class="note-cocina">Para instalación tipo ladrillo trabado.</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-cocina">
+        <div class="total-cocina"><span>Muro fondo 2.28 x 2.18</span><span>4.97 m²</span></div>
+        <div class="total-cocina"><span>Muro ventana ajustado</span><span>2.94 m²</span></div>
+        <div class="total-cocina"><span>Total neto</span><strong>7.91 m²</strong></div>
+        <div class="total-cocina"><span>Total a comprar +10%</span><strong>9.00 m² (100 mallas)</strong></div>
+        <div class="progress-cocina"><div class="bar-cocina" id="bar3"></div></div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <script>
-    function update() {
-      const filas = document.querySelectorAll('.row');
-      const completadas = document.querySelectorAll('.row.done').length;
-      const porcentaje = (completadas / filas.length) * 100;
-      
-      document.getElementById('bar').style.width = porcentaje + '%';
-      document.getElementById('txt').textContent = `${completadas} de ${filas.length} completado`;
-    }
-  </script>
+<script>
+  // Navegación
+  function mostrarSeccion(indice) {
+    const secciones = document.querySelectorAll('.seccion');
+    const botones = document.querySelectorAll('.nav-btn');
+    secciones.forEach((s, i) => s.classList.toggle('activa', i === indice));
+    botones.forEach((b, i) => {
+      b.classList.toggle('activo', i === indice);
+      b.classList.toggle('inactivo', i !== indice);
+    });
+  }
+
+  // Progreso 1 — Interior
+  function update1() {
+    const t = document.querySelectorAll('.row').length;
+    const d = document.querySelectorAll('.row.done').length;
+    document.getElementById('bar1').style.width = (d/t*100) + '%';
+    document.getElementById('txt1').textContent = `${d} de ${t} completado`;
+  }
+
+  // Progreso 2 — Patio
+  function update2() {
+    const t = document.querySelectorAll('.row-patio').length;
+    const d = document.querySelectorAll('.row-patio.done').length;
+    document.getElementById('bar2').style.width = (d/t*100) + '%';
+    document.getElementById('txt2').textContent = `${d} de ${t} completado`;
+  }
+
+  // Progreso 3 — Cocina
+  function update3() {
+    const t = document.querySelectorAll('.row-cocina').length;
+    const d = document.querySelectorAll('.row-cocina.done').length;
+    document.getElementById('bar3').style.width = (d/t*100) + '%';
+  }
+</script>
 </body>
 </html>
