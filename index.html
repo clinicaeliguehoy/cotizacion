@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista Completa de Materiales</title>
+  <title>Remodelación - Lista de Materiales</title>
   <style>
     * {
       box-sizing: border-box;
@@ -15,18 +15,20 @@
       background: #f1f2f4;
       color: #1a1a1a;
       padding: 20px;
+      line-height: 1.5;
     }
-    /* Navegación */
+    /* === NAVEGACIÓN === */
     .nav {
-      max-width: 520px;
+      max-width: 620px;
       margin: 0 auto 20px;
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .nav-btn {
       flex: 1;
-      min-width: 100px;
+      min-width: 90px;
       padding: 10px 8px;
       border: none;
       border-radius: 10px;
@@ -46,7 +48,7 @@
     .nav-btn.inactivo:hover {
       background: #d1d5db;
     }
-    /* Secciones */
+    /* === SECCIONES === */
     .seccion {
       display: none;
     }
@@ -58,7 +60,50 @@
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
+    /* === GALERÍA === */
+    .contenedor-galeria {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .titulo-galeria {
+      text-align: center;
+      font-size: 22px;
+      color: #111827;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .grid-galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .item-galeria {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: white;
+      transition: transform 0.3s ease;
+    }
+    .item-galeria:hover {
+      transform: translateY(-4px);
+    }
+    .item-galeria img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .nombre-foto {
+      padding: 10px;
+      font-size: 12px;
+      color: #4b5563;
+      text-align: center;
+    }
+    @media (max-width: 520px) {
+      .grid-galeria {
+        grid-template-columns: 1fr;
+      }
+    }
     /* === ESTILO 1: Interior + Escalera === */
     .ticket {
       max-width: 520px;
@@ -156,7 +201,6 @@
     }
     .bar { height: 100%; background: #111827; width: 0%; transition: width 0.3s ease; }
     .small { font-size: 11px; color: #9ca3af; margin-top: 8px; text-align: center; }
-
     /* === ESTILO 2: Patio Servicio === */
     .ticket-patio {
       max-width: 480px;
@@ -252,7 +296,6 @@
     }
     .bar-patio { height: 100%; background: #2b2117; width: 0%; transition: width 0.3s ease; }
     .small-patio { font-size: 11px; color: #9a8a7a; margin-top: 8px; text-align: center; }
-
     /* === ESTILO 3: Cocina === */
     .ticket-cocina {
       max-width: 520px;
@@ -361,7 +404,6 @@
       margin-top: 12px;
     }
     .bar-cocina { height: 100%; background: #0f172a; width: 0%; transition: width 0.3s ease; }
-
     /* === ESTILO 4: Baños === */
     .ticket-banos {
       max-width: 480px;
@@ -473,16 +515,16 @@
   </style>
 </head>
 <body>
-
-  <!-- Navegación -->
+  <!-- NAVEGACIÓN -->
   <nav class="nav">
     <button class="nav-btn activo" onclick="mostrarSeccion(0)">🏠 Interior</button>
     <button class="nav-btn inactivo" onclick="mostrarSeccion(1)">🧱 Patio</button>
     <button class="nav-btn inactivo" onclick="mostrarSeccion(2)">🍳 Cocina</button>
     <button class="nav-btn inactivo" onclick="mostrarSeccion(3)">🚽 Baños</button>
+    <button class="nav-btn inactivo" onclick="mostrarSeccion(4)">🖼️ Galería</button>
   </nav>
 
-  <!-- SECCIÓN 1: Interior + Escalera -->
+  <!-- SECCIÓN 1: Interior -->
   <section class="seccion activa">
     <div class="ticket">
       <div class="header">
@@ -553,7 +595,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN 2: Patio Servicio -->
+  <!-- SECCIÓN 2: Patio -->
   <section class="seccion">
     <div class="ticket-patio">
       <div class="header-patio">
@@ -715,8 +757,73 @@
     </div>
   </section>
 
+  <!-- SECCIÓN 5: GALERÍA -->
+  <section class="seccion">
+    <div class="contenedor-galeria">
+      <h2 class="titulo-galeria">🖼️ Galería de Fotos</h2>
+      
+      <div class="grid-galeria">
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.45 (4).jpeg" alt="Sala y comedor" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.45 (5).jpeg" alt="Espacio amplio" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.45 (6).jpeg" alt="Acceso blanco" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.45 (7).jpeg" alt="Acceso con madera" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.46 (1).jpeg" alt="Lavabo" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.46 (2).jpeg" alt="Baño" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.46 (3).jpeg" alt="Recámara" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.46 (4).jpeg" alt="Tarja doble" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.46 (5).jpeg" alt="Cocina" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.46.jpeg" alt="Detalle" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.47 (1).jpeg" alt="Espacio" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.47 (2).jpeg" alt="Escalera" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.47 (3).jpeg" alt="Vista" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+        <div class="item-galeria">
+          <img src="img/WhatsApp Image 2026-10-03 at 02.36.47.jpeg" alt="Acabado" loading="lazy">
+          <div class="nombre-foto"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <script>
-  // Navegación entre secciones
   function mostrarSeccion(indice) {
     const secciones = document.querySelectorAll('.seccion');
     const botones = document.querySelectorAll('.nav-btn');
@@ -726,31 +833,23 @@
       b.classList.toggle('inactivo', i !== indice);
     });
   }
-
-  // Progreso 1 — Interior
   function update1() {
     const t = document.querySelectorAll('.row').length;
     const d = document.querySelectorAll('.row.done').length;
     document.getElementById('bar1').style.width = (d/t*100) + '%';
     document.getElementById('txt1').textContent = `${d} de ${t} completado`;
   }
-
-  // Progreso 2 — Patio
   function update2() {
     const t = document.querySelectorAll('.row-patio').length;
     const d = document.querySelectorAll('.row-patio.done').length;
     document.getElementById('bar2').style.width = (d/t*100) + '%';
     document.getElementById('txt2').textContent = `${d} de ${t} completado`;
   }
-
-  // Progreso 3 — Cocina
   function update3() {
     const t = document.querySelectorAll('.row-cocina').length;
     const d = document.querySelectorAll('.row-cocina.done').length;
     document.getElementById('bar3').style.width = (d/t*100) + '%';
   }
-
-  // Progreso 4 — Baños
   function update4() {
     const t = document.querySelectorAll('.row-banos').length;
     const d = document.querySelectorAll('.row-banos.done').length;
