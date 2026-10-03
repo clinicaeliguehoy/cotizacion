@@ -26,11 +26,11 @@
     }
     .nav-btn {
       flex: 1;
-      min-width: 140px;
-      padding: 10px 10px;
+      min-width: 100px;
+      padding: 10px 8px;
       border: none;
       border-radius: 10px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
@@ -58,6 +58,7 @@
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     /* === ESTILO 1: Interior + Escalera === */
     .ticket {
       max-width: 520px;
@@ -360,6 +361,115 @@
       margin-top: 12px;
     }
     .bar-cocina { height: 100%; background: #0f172a; width: 0%; transition: width 0.3s ease; }
+
+    /* === ESTILO 4: Baños === */
+    .ticket-banos {
+      max-width: 480px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e7e5e4;
+    }
+    .header-banos {
+      background: #57534e;
+      color: white;
+      padding: 24px;
+    }
+    .header-banos h1 { font-size: 18px; }
+    .header-banos p { opacity: 0.7; margin-top: 6px; font-size: 12px; line-height: 1.5; }
+    .badge-banos {
+      display: inline-block;
+      background: #a8a29e;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 12px;
+    }
+    .grid-banos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .card-banos {
+      background: #f5f5f4;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #e7e5e4;
+    }
+    .card-banos b { font-size: 18px; display: block; color: #57534e; }
+    .card-banos span { font-size: 11px; color: #78716c; }
+    .alert-banos {
+      background: #f5f5f4;
+      border: 1px solid #d6d3d1;
+      color: #57534e;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .row-banos {
+      display: flex;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f5f5f4;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .row-banos:hover { background: #fafaf9; }
+    .row-banos:last-child { border-bottom: none; }
+    .check-banos {
+      width: 22px; height: 22px;
+      border: 2px solid #57534e;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .row-banos.done .check-banos {
+      background: #57534e;
+      border-color: #57534e;
+      color: white;
+    }
+    .row-banos.done .check-banos::after { content: '✓'; font-size: 13px; font-weight: bold; }
+    .row-banos.done .info-banos { opacity: 0.5; text-decoration: line-through; }
+    .info-banos { flex: 1; }
+    .qty-banos { font-weight: 800; font-size: 15px; }
+    .prod-banos { font-size: 13px; margin-top: 2px; }
+    .note-banos {
+      font-size: 11px;
+      color: #78716c;
+      margin-top: 4px;
+      background: #fafaf9;
+      padding: 6px 8px;
+      border-radius: 6px;
+    }
+    .footer-banos {
+      padding: 18px 20px;
+      background: #fafaf9;
+      border-top: 1px dashed #d6d3d1;
+    }
+    .total-banos {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 5px 0;
+    }
+    .progress-banos {
+      height: 6px;
+      background: #e7e5e4;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .bar-banos { height: 100%; background: #57534e; width: 0%; transition: width 0.3s ease; }
   </style>
 </head>
 <body>
@@ -369,6 +479,7 @@
     <button class="nav-btn activo" onclick="mostrarSeccion(0)">🏠 Interior</button>
     <button class="nav-btn inactivo" onclick="mostrarSeccion(1)">🧱 Patio</button>
     <button class="nav-btn inactivo" onclick="mostrarSeccion(2)">🍳 Cocina</button>
+    <button class="nav-btn inactivo" onclick="mostrarSeccion(3)">🚽 Baños</button>
   </nav>
 
   <!-- SECCIÓN 1: Interior + Escalera -->
@@ -555,8 +666,57 @@
     </div>
   </section>
 
+  <!-- SECCIÓN 4: Baños -->
+  <section class="seccion">
+    <div class="ticket-banos">
+      <div class="header-banos">
+        <h1>BAÑOS - GRIS LAVABO</h1>
+        <p>2 Baños - Solo backsplash como foto referencia<br>0.80m ancho × 0.60m alto por baño = 0.48 m² c/u</p>
+        <div class="badge-banos">2 BAÑOS - DETALLE GRIS COMO FOTO</div>
+      </div>
+      <div class="content">
+        <div class="grid-banos">
+          <div class="card-banos"><b>0.96 m²</b><span>Neto 2 baños</span></div>
+          <div class="card-banos"><b>2.00 m²</b><span>Comprar con corte</span></div>
+        </div>
+        <div class="alert-banos">📌 Como en la foto: solo cuadrito atrás del ovalín, no muro completo. 0.80 × 0.60m por baño.</div>
+        
+        <div class="row-banos" onclick="this.classList.toggle('done'); update4();">
+          <div class="check-banos"></div>
+          <div class="info-banos">
+            <div class="qty-banos">2 m² (12 pzas si es 30×60)</div>
+            <div class="prod-banos">Azulejo Gris Concreto / Cemento 30×60 o 30×30</div>
+            <div class="note-banos">Igual al de tu foto de referencia gris medio. Si es 30×60 son 6 pzas por baño. Con 2 m² te sobra para cortes.</div>
+          </div>
+        </div>
+        <div class="row-banos" onclick="this.classList.toggle('done'); update4();">
+          <div class="check-banos"></div>
+          <div class="info-banos">
+            <div class="qty-banos">1 bulto - 20kg</div>
+            <div class="prod-banos">CREST Blanco Normal 20kg</div>
+            <div class="note-banos">1 solo bulto te alcanza para los 2 detalles. No necesitas PSP.</div>
+          </div>
+        </div>
+        <div class="row-banos" onclick="this.classList.toggle('done'); update4();">
+          <div class="check-banos"></div>
+          <div class="info-banos">
+            <div class="qty-banos">1 bolsa chica - 2kg</div>
+            <div class="prod-banos">Boquilla Gris Medio Sin Arena</div>
+            <div class="note-banos">Color gris para que combine con el azulejo concreto.</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-banos">
+        <div class="total-banos"><span>Por baño 0.80 × 0.60</span><span>0.48 m²</span></div>
+        <div class="total-banos"><span>2 baños neto</span><span>0.96 m²</span></div>
+        <div class="total-banos"><span>Total a comprar</span><strong>2.00 m²</strong></div>
+        <div class="progress-banos"><div class="bar-banos" id="bar4"></div></div>
+      </div>
+    </div>
+  </section>
+
 <script>
-  // Navegación
+  // Navegación entre secciones
   function mostrarSeccion(indice) {
     const secciones = document.querySelectorAll('.seccion');
     const botones = document.querySelectorAll('.nav-btn');
@@ -588,6 +748,13 @@
     const t = document.querySelectorAll('.row-cocina').length;
     const d = document.querySelectorAll('.row-cocina.done').length;
     document.getElementById('bar3').style.width = (d/t*100) + '%';
+  }
+
+  // Progreso 4 — Baños
+  function update4() {
+    const t = document.querySelectorAll('.row-banos').length;
+    const d = document.querySelectorAll('.row-banos.done').length;
+    document.getElementById('bar4').style.width = (d/t*100) + '%';
   }
 </script>
 </body>
